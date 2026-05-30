@@ -508,7 +508,7 @@
 
     try {
       const submissionId = Date.now().toString();
-      const photoRef = ref(storage, `energy/job_photos/${submissionId}/${selectedPhoto.name}`);
+      const photoRef = ref(storage, `job_photos/${submissionId}/${selectedPhoto.name}`);
       const uploadTask = uploadBytesResumable(photoRef, selectedPhoto);
 
       const photoURL = await new Promise((resolve, reject) => {
@@ -530,7 +530,7 @@
       btnText.textContent = 'Saving submission...';
       const jobType = document.querySelector('input[name="jobType"]:checked').value;
 
-      await addDoc(collection(db, 'submissions', 'energy', 'jobs'), {
+      await addDoc(collection(db, 'job_submissions'), {
         submission_id: submissionId,
         division: 'energy',
         timestamp: serverTimestamp(),
